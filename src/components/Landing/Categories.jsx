@@ -37,7 +37,6 @@ const Categories = () => {
     } else {
       getPhotosByQuery(selectedButtons).then((results) => {
         setImages(results);
-        console.log(results);
       });
     }
   };
@@ -65,7 +64,16 @@ const Categories = () => {
             </button>
           ))}
         </div>
-      </div>
+
+        {selectedButtons.length > 0 && (
+          <button
+            className="btn btn-outline m-3  btn-accent"
+            onClick={() => setImages([]) || setSelectedButtons([])}
+          >
+            Limpiar selección
+          </button>
+        )}
+        </div>
       <div className="columns-2 md:columns-3 lg:columns-4 mx-8 mb-10">
         {images.map((image) => (
           <img
@@ -76,7 +84,9 @@ const Categories = () => {
             onClick={() => handleImageClick(image)}
           />
         ))}
-        {modalImage && <Modal image={modalImage.urls} onClose={handleCloseModal} />}
+        {modalImage && (
+          <Modal image={modalImage.urls.regular} onClose={handleCloseModal} />
+        )}
       </div>
     </>
   );

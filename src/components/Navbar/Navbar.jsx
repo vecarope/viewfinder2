@@ -5,7 +5,7 @@ import { LogoutButton } from '../Login/Logout'
 
 const Navbar = () => 
 {
-  const [ isLoggedIn, setIsLoggedIn] = useState(true)
+  const [ isLoggedIn, setIsLoggedIn] = useState(false)
 
   return (
     <div className="navbar fixed bg-opacity-40 bg-gray-dark">
@@ -15,7 +15,7 @@ const Navbar = () =>
   <div className="navbar-end mr-1">
 
     <LoginButton/>
-    <LogoutButton/>
+    { isLoggedIn && (<LogoutButton/>)}
   </div>
 </div>
 

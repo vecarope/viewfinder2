@@ -22,13 +22,14 @@ const ImageList = ({ images }) => {
       {images.map((image, key) => (
         <img
           key={key}
-          src={image.regular}
+          src={image}
           alt={image.description}
           className="mb-4"
           onClick={()=> handleImageClick(image)}
         />
       ))}
       {modalImage && <Modal image={modalImage} onClose={handleCloseModal}/>}
+      {console.log('modal', modalImage )}
     </div>
   );
 };

@@ -6,7 +6,7 @@ import Categories from "./Categories";
 
 const Hero = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [imagesUrl, setImagesUrl] = useState([]);
+  const [images, setImages] = useState([]);
   const [ search, setSearch ] = useState(false);
   const imageListRef = useRef(null); 
 
@@ -30,8 +30,8 @@ const Hero = () => {
 
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
-    const imagesUrl = await getImagesByTag(searchTerm);
-    setImagesUrl(imagesUrl);
+    const images = await getImagesByTag(searchTerm);
+    setImages(images);
     setSearch(true);
     imageListRef.current.scrollIntoView({ behavior: 'smooth'}); 
   };
@@ -39,7 +39,7 @@ const Hero = () => {
   const handleClear = (event) =>{
     event.preventDefault();
     setSearchTerm("");
-    setImagesUrl([]);
+    setImages([]);
     setCategory("");
     setSearch(false);
   };
@@ -135,7 +135,7 @@ const Hero = () => {
       <div> 
         <Categories />
         <div ref={imageListRef}>
-        <ImageList  images={imagesUrl} />
+        <ImageList  images={images} />
         </div>
       </div>
     </>
