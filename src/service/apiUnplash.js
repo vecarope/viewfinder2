@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const accessKey=`process.env.REACT_APP_API_UNPLASH_ACCESS_KEY`
+export const accessKey= '7a4kR5poyus63pMcekuxFEy-EPptcQ1PcTBjel8MqSA'
 
 export const getPhotosByQuery = async (query) => {
   try {

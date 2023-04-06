@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { accessKey } from "../../service/apiUnplash";
 import axios from "axios";
 import ImageList from "./Image";
@@ -7,9 +7,12 @@ import Categories from "./Categories";
 const Hero = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [imagesUrl, setImagesUrl] = useState([]);
+  const [ search, setSearch ] = useState(false);
+  const imageListRef = useRef(null); 
 
-  const getImagesByTag = (tag) => {
-    return axios
+
+  const getImagesByTag = async(tag) => {
+    return await axios
       .get(
         `https://api.unsplash.com/photos/random?&fit&count=18&query=${tag}&client_id=${accessKey}`
       )
@@ -29,7 +32,18 @@ const Hero = () => {
     event.preventDefault();
     const imagesUrl = await getImagesByTag(searchTerm);
     setImagesUrl(imagesUrl);
+    setSearch(true);
+    imageListRef.current.scrollIntoView({ behavior: 'smooth'}); 
   };
+
+  const handleClear = (event) =>{
+    event.preventDefault();
+    setSearchTerm("");
+    setImagesUrl([]);
+    setCategory("");
+    setSearch(false);
+  };
+
 
   return (
     <>
@@ -39,7 +53,7 @@ const Hero = () => {
           backgroundImage: `url("https://source.unsplash.com/random/?montain") `,
         }}
       >
-        <div className="hero-overlay bg-opacity-60 bg-gray-dark "></div>
+        <div className="hero-overlay bg-opacity-20 bg-gray-dark "></div>
         <div className="hero-content text-center ">
           <div className="max-w-md">
             <h1 className="mb-5 text-8xl font-bold text-[#ffff]">HOLA!</h1>
@@ -111,13 +125,18 @@ const Hero = () => {
                   />
                 </svg>
               </button>
+              {search && (
+              <button className='btn' onClick={ handleClear}>limpiar</button>
+              )}
             </div>
           </form>
         </div>
       </div>
       <div> 
         <Categories />
-        <ImageList imagesUrl={imagesUrl} />
+        <div ref={imageListRef}>
+        <ImageList  images={imagesUrl} />
+        </div>
       </div>
     </>
   );

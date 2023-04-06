@@ -13,9 +13,9 @@ const Navbar = () =>
     <a className="btn btn-ghost normal-case text-4xl text-dark-grey-200">ViewFinder</a>
   </div>
   <div className="navbar-end mr-1">
-    { isLoggedIn ? (
-    <LoginButton/>): (
-    <LogoutButton/>) }
+
+    <LoginButton/>
+    <LogoutButton/>
   </div>
 </div>
 
