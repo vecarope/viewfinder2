@@ -7,11 +7,10 @@ import Categories from "./Categories";
 const Hero = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [images, setImages] = useState([]);
-  const [ search, setSearch ] = useState(false);
-  const imageListRef = useRef(null); 
+  const [search, setSearch] = useState(false);
+  const imageListRef = useRef(null);
 
-
-  const getImagesByTag = async(tag) => {
+  const getImagesByTag = async (tag) => {
     return await axios
       .get(
         `https://api.unsplash.com/photos/random?&fit&count=18&query=${tag}&client_id=${accessKey}`
@@ -33,17 +32,16 @@ const Hero = () => {
     const images = await getImagesByTag(searchTerm);
     setImages(images);
     setSearch(true);
-    imageListRef.current.scrollIntoView({ behavior: 'smooth'}); 
+    imageListRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleClear = (event) =>{
+  const handleClear = (event) => {
     event.preventDefault();
     setSearchTerm("");
     setImages([]);
     setCategory("");
     setSearch(false);
   };
-
 
   return (
     <>
@@ -62,7 +60,7 @@ const Hero = () => {
             </p>
             <form onSubmit={handleSearchSubmit}>
               <label className="relative block ">
-                <span className="sr-only  ">Buscar</span>
+                <span className="sr-only">Buscar</span>
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -126,16 +124,18 @@ const Hero = () => {
                 </svg>
               </button>
               {search && (
-              <button className='btn' onClick={ handleClear}>limpiar</button>
+                <button className="btn" onClick={handleClear}>
+                  limpiar
+                </button>
               )}
             </div>
           </form>
         </div>
       </div>
-      <div> 
+      <div>
         <Categories />
         <div ref={imageListRef}>
-        <ImageList  images={images} />
+          <ImageList images={images} />
         </div>
       </div>
     </>

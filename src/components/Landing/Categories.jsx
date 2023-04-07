@@ -46,7 +46,7 @@ const Categories = () => {
       <div className="mt-10 mx-4 ">
         <p className="text-center text-2xl text-stone-900 ">
           Eljige la categoria que buscas, y si te animas puedes mezclarlas,
-          <p> necesitas un retrato urbano? o un animales con flora?,</p>{" "}
+          <p> necesitas un retrato urbano? o animales con flora?,</p>{" "}
           intentalo!
         </p>
       </div>

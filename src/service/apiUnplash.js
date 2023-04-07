@@ -5,7 +5,7 @@ export const accessKey= '7a4kR5poyus63pMcekuxFEy-EPptcQ1PcTBjel8MqSA'
 export const getPhotosByQuery = async (query) => {
   try {
     const response = await axios.get(
-      `https://api.unsplash.com/search/photos?query=${query}&client_id=${accessKey}`,
+      `https://api.unsplash.com/search/photos?&query=${query}&client_id=${accessKey}`,
       {timeout: 1000 }
     );
     return response.data.results;
