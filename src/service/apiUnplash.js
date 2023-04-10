@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const accessKey= '7a4kR5poyus63pMcekuxFEy-EPptcQ1PcTBjel8MqSA'
+export const accessKey= import.meta.env.VITE_API_UNPLASH_ACCESS_KEY;
 
 export const getPhotosByQuery = async (query) => {
   try {

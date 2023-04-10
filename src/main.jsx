@@ -7,8 +7,8 @@ import './App.css';
 import App from './App';
 import { Auth0Provider } from '@auth0/auth0-react'; 
 
-const domain = 'dev-7k1y74j7uaoyfowj.us.auth0.com';
-const clientId = 'WkXvIQTis6OOBl4aERgrQWfHkexhR2bJ';
+const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+const clientId = import.meta.env.VITE_AUTH0_CLIENTID;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
