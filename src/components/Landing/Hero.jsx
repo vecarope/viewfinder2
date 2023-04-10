@@ -81,7 +81,7 @@ const Hero = () => {
                   className="placeholder:text-slate-800 block bg-white w-full border 
             border-slate-300 rounded-md py-2 pl-10 pr-3 shadow-sm focus:outline-none 
             focus:border-sky-500 focus:ring-sky-500 focus:ring-1 text-2xl text-gray-dark"
-                  placeholder="Buscar imagen..."
+                  placeholder="Buscar imagenes..."
                   type="text"
                   name="search"
                   value={searchTerm}
